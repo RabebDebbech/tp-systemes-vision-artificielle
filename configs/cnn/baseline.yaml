@@ -1,0 +1,28 @@
+seed: 42
+
+data:
+  manifest_path: data/processed/manifest_224.parquet
+  image_col: processed_filepath
+  label_col: label
+  split_col: split
+  image_size: 224
+  batch_size: 32
+  num_workers: 0
+
+model:
+  name: resnet18
+  num_classes: 6
+  pretrained: true
+  freeze_backbone: true
+
+train:
+  epochs: 5
+  lr: 0.001
+  weight_decay: 0.0001
+  patience: 2
+  use_augmentation: false
+  scheduler: none
+
+output:
+  run_name: cnn_baseline
+  output_dir: models/cnn_baseline
